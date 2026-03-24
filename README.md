@@ -29,15 +29,17 @@ This makes all packages available in the corresponding Nixpkgs package sets.
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    fin.url = "github:kirelagin/fin.nix";
-    fin.inputs.nixpkgs.follows = "nixpkgs";
+    fin-nix = {
+      url = "github:kirelagin/fin.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, fin, ... }:
+  outputs = { nixpkgs, fin-nix, ... }:
     let
       pkgs = import nixpkgs {
         system = "x86_64-linux";
-        overlays = [ fin.overlays.default ];
+        overlays = [ fin-nix.overlays.default ];
       };
     in {
       # Example: a Python environment with ibind
@@ -48,14 +50,14 @@ This makes all packages available in the corresponding Nixpkgs package sets.
 }
 ```
 
-It is recommended to set `fin.inputs.nixpkgs.follows` to use the same Nixpkgs
+It is recommended to set `fin-nix.inputs.nixpkgs.follows` to use the same Nixpkgs
 revision throughout your flake, avoiding duplicate Nixpkgs evaluations and
 ensuring consistent package versions.
 
 If you use NixOS or Home Manager, you can apply the overlay in your configuration:
 
 ```nix
-nixpkgs.overlays = [ fin.overlays.default ];
+nixpkgs.overlays = [ fin-nix.overlays.default ];
 ```
 
 ## Contributing
