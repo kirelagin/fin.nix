@@ -30,6 +30,7 @@ This makes all packages available in the corresponding Nixpkgs package sets.
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     fin.url = "github:kirelagin/fin.nix";
+    fin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { nixpkgs, fin, ... }:
@@ -46,6 +47,10 @@ This makes all packages available in the corresponding Nixpkgs package sets.
     };
 }
 ```
+
+It is recommended to set `fin.inputs.nixpkgs.follows` to use the same Nixpkgs
+revision throughout your flake, avoiding duplicate Nixpkgs evaluations and
+ensuring consistent package versions.
 
 If you use NixOS or Home Manager, you can apply the overlay in your configuration:
 
