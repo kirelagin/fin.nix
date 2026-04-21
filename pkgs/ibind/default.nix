@@ -15,19 +15,21 @@
   urllib3,
   websocket-client,
 
+  pytest-mock,
+
   pytestCheckHook,
 }:
 
 buildPythonPackage (finalAttrs: {
   pname = "ibind";
-  version = "0.1.22";
+  version = "0.1.23";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "Voyz";
     repo = "ibind";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-hFjxkAEbhbcwseI7XwrEBtq5kzGj6XRBw3mqcxar9r0=";
+    hash = "sha256-G7H8WrS5qyHY7KXa7dxk4HIFu5CcmjNIIgY/50G/xLk=";
   };
 
   postUnpack = ''
@@ -50,12 +52,10 @@ buildPythonPackage (finalAttrs: {
     "websocket-client"
   ];
 
-  preCheck = ''
-    # The file format is just wrong(?)
-    # NOTE: already fixed upstream, remove when not needed anymore
-    substituteInPlace "pytest.ini" \
-      --replace-fail '[tool:pytest]' '[pytest]'
-  '';
+  checkInputs = [
+    pytest-mock
+  ];
+
   nativeCheckInputs = [ pytestCheckHook ];
 
   disabledTestPaths = lib.optionals stdenv.hostPlatform.isDarwin [
