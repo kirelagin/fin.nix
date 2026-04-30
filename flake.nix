@@ -24,8 +24,18 @@
       in
       {
         packages = {
+          inherit (pkgs)
+            opensteuerauszug
+          ;
+
           python3Packages = {
-            ibind = pkgs.python3Packages.ibind;
+            inherit (pkgs.python3Packages)
+              ibind
+              ibflex2
+              opensteuerauszug
+              pdf417gen
+              pydantic-xml
+            ;
           };
         };
       }
