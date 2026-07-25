@@ -22,14 +22,14 @@
 
 buildPythonPackage (finalAttrs: {
   pname = "ibind";
-  version = "0.1.23";
+  version = "0.1.24";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "Voyz";
     repo = "ibind";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-G7H8WrS5qyHY7KXa7dxk4HIFu5CcmjNIIgY/50G/xLk=";
+    hash = "sha256-yJ70fw1VZMn3CPChgNO3GZR5yPZshD+tgXnKvZwXmc0=";
   };
 
   postUnpack = ''
