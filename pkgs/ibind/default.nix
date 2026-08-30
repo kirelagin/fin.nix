@@ -11,6 +11,7 @@
   setuptools,
 
   pycryptodome,
+  pydantic,
   requests,
   urllib3,
   websocket-client,
@@ -22,14 +23,14 @@
 
 buildPythonPackage (finalAttrs: {
   pname = "ibind";
-  version = "0.1.24";
+  version = "0.2.1";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "Voyz";
     repo = "ibind";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-yJ70fw1VZMn3CPChgNO3GZR5yPZshD+tgXnKvZwXmc0=";
+    hash = "sha256-rJYL2O2Sph/wFAZxTlVpUyJcwSNMQYjUfftyYlrqyRs=";
   };
 
   postUnpack = ''
@@ -41,15 +42,16 @@ buildPythonPackage (finalAttrs: {
   ];
 
   dependencies = [
-    pycryptodome
+    pydantic
     requests
-    urllib3
     websocket-client
+
+    # oauth
+    pycryptodome
+    urllib3
   ];
 
   pythonRelaxDeps = [
-    "requests"
-    "websocket-client"
   ];
 
   checkInputs = [
