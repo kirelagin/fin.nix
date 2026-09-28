@@ -18,7 +18,7 @@
 
 buildPythonPackage (finalAttrs: {
   pname = "ibflex2";
-  version = "2026-04-30";
+  version = "0-unstable-2026-04-30";
   pyproject = true;
 
   src = fetchFromGitHub {

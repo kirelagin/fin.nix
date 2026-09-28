@@ -18,14 +18,15 @@
 
 buildPythonPackage (finalAttrs: {
   pname = "pdf417gen";
-  version = "2026-04-30";
+  version = "0-unstable-2026-05-01";
   pyproject = true;
 
   src = fetchFromGitHub {
-    owner = "ihabunek";
+    #owner = "ihabunek";
+    owner = "vroonhof";
     repo = "pdf417-py";
-    rev = "c163f2a6af8d159a54c56c431da6cc642c1c98b6";
-    hash = "sha256-x3W9rUazg9rP1nqV6gBTAD79oqninK5U9q4mjCMAEc0=";
+    rev = "44ce800bf7301ea88aaabd2e1a680238c96fc4a9";
+    hash = "sha256-9PVFnJ5lDhzN9bYuDa6F5rAYDs7QUsSJWRkUQ1FvTJ0=";
   };
 
   build-system = [ setuptools setuptools-scm ];
