@@ -32,14 +32,14 @@
 
 buildPythonPackage (finalAttrs: {
   pname = "opensteuerauszug";
-  version = "2026-09-25";
+  version = "2026-09-28";
   pyproject = true;
 
   src = fetchFromGitHub {
-    owner = "vroonhof";
+    owner = "kirelagin";
     repo = "opensteuerauszug";
-    rev = "eeb3b3d790c5ba9c8cd2e256d228d0bae62ec572";
-    hash = "sha256-FilM7/ACD4KAwF+HvA5KAYMneyDjWxM2QB5py7GqgQM=";
+    rev = "00d35dc7bc5fc3b1ec0ec663cecf8f0f2e77a4da";
+    hash = "sha256-/3BGzStIcHEF/4FCutMxsw4lqgUR28ZdVjdvzgEqFgI=";
   };
 
   build-system = [ hatchling ];
